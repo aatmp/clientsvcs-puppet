@@ -1,0 +1,9 @@
+<cross-domain-policy>
+<allow-access-from domain="*.mediaplatformqa.com" secure="false"/>
+<allow-access-from domain="*.mediaplatform.com" secure="false"/>
+<allow-access-from domain="*.mediaplatformdev.com" secure="false"/>
+<allow-access-from domain="*.kutu.ru" secure="false"/>
+<allow-access-from domain="*.jwplayer.com" secure="false"/>
+<allow-access-from domain="*.ideaweb.it" secure="false"/>
+<site-control permitted-cross-domain-policies="all"/>
+</cross-domain-policy>

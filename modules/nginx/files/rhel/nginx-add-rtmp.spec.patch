@@ -1,0 +1,61 @@
+--- nginx.spec.orig	2014-08-14 10:25:43.796380542 -0700
++++ nginx.spec	2014-08-14 12:59:33.049447305 -0700
+@@ -2,6 +2,8 @@
+ %define nginx_home %{_localstatedir}/cache/nginx
+ %define nginx_user nginx
+ %define nginx_group nginx
++%define nginx_rtmp_version 1.1.4
++%define nginx_videoroot %{_datadir}/nginx/videos
+ 
+ # distribution specific definitions
+ %define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7)
+@@ -46,7 +48,7 @@
+ Summary: High performance web server
+ Name: nginx
+ Version: 1.6.1
+-Release: 1%{?dist}.ngx
++Release: 2%{?dist}.mp
+ Vendor: nginx inc.
+ URL: http://nginx.org/
+ 
+@@ -60,6 +62,7 @@
+ Source7: nginx.suse.init
+ Source8: nginx.service
+ Source9: nginx.upgrade.sh
++Source99: https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}.tar.gz
+ 
+ License: 2-clause BSD-like license
+ 
+@@ -82,6 +85,7 @@
+ 
+ %prep
+ %setup -q
++%setup -T -D -a 99
+ 
+ %build
+ ./configure \
+@@ -119,6 +123,7 @@
+         --with-debug \
+         %{?with_spdy:--with-http_spdy_module} \
+         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++	--add-module=nginx-rtmp-module-%{nginx_rtmp_version} \
+         $*
+ make %{?_smp_mflags}
+ %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
+@@ -157,6 +162,7 @@
+         --with-ipv6 \
+         %{?with_spdy:--with-http_spdy_module} \
+         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++	--add-module=nginx-rtmp-module-%{nginx_rtmp_version} \
+         $*
+ make %{?_smp_mflags}
+ 
+@@ -326,6 +332,9 @@
+ fi
+ 
+ %changelog
++* Thu Aug 14 2014 Adam Ravid <aravid@mediaplatform.com>
++- added nginx-rtmp-module
++
+ * Thu Aug  5 2014 Sergey Budnevitch <sb@nginx.com>
+ - 1.6.1

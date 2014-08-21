@@ -1,0 +1,2 @@
+deb http://example.org/packages/ubuntu/ precise rabbitmq
+deb-src http://example.org/packages/ubuntu/ precise rabbitmq
