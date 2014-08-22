@@ -9,7 +9,7 @@ class nginx::oep-base {
         require   => Package["nginx"] 
     }
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		file { "nginx.list":
 		  name => "/etc/apt/sources.list.d/nginx.list", 

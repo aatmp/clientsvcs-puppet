@@ -1,7 +1,7 @@
 
 class nodejs::nodejs_common {
 
-    case $lsbdistid {
+    case $operatingsystem {
 
         'CentOS', 'RedHat', 'RedHatEnterpriseServer': {
 	    include "el::epel"

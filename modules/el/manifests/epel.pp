@@ -1,7 +1,7 @@
 
 class el::epel {
 
-    case $lsbdistid {
+    case $operatingsystem {
 	'CentOS', 'RedHat', 'RedHatEnterpriseServer': {
                 package { "epel":
 		  name => "epel-release-6-8.noarch",

@@ -9,7 +9,7 @@ class redis::redis_common {
         require   => Package["redis"] 
     }
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		package { "redis server":
 		  name   => "redis",

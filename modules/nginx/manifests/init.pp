@@ -9,7 +9,7 @@ class nginx::nginx_common {
         require   => Package["nginx"] #Package["$nginx::nginx_common::nginxPackage"]
     }
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		file { "nginx.list":
 		  name => "/etc/apt/sources.list.d/nginx.list", 

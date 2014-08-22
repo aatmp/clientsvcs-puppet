@@ -9,7 +9,7 @@ class rabbitmq::rabbitmq_common {
         require   => Package["rabbitmq-server"] 
     }
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		package { "rabbitmq server":
 		  name   => "rabbitmq-server",

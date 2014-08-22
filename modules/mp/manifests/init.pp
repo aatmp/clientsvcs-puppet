@@ -1,7 +1,7 @@
 
 class mp::mp_common {
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		file { "mp.list":
 		  name => "/etc/apt/sources.list.d/mp.list", 

@@ -1,7 +1,7 @@
 
 class ftpd::ftpd_common {
 
-    case $lsbdistid {
+    case $operatingsystem {
 
         'CentOS', 'RedHat', 'RedHatEnterpriseServer': {
 

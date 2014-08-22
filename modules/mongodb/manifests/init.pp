@@ -9,7 +9,7 @@ class mongodb::mongodb_common {
         require   => Package["mongodb-org"] 
     }
 
-    case $lsbdistid {
+    case $operatingsystem {
         'Ubuntu': {
 		file { "mongodb.list":
 		  name => "/etc/apt/sources.list.d/mongodb.list", 
