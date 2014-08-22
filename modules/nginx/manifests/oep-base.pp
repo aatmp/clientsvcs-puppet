@@ -44,13 +44,7 @@ class nginx::oep-base {
 		}
         }
 	'CentOS', 'RedHat', 'RedHatEnterpriseServer': {
-		yumrepo { 'mp':
-		  descr   => 'mp repo',
-		  baseurl => 'http://yum.mediaplatform.com/el/$releasever/$basearch/',
-		  enabled => 1,
-		  gpgcheck => 0,
-		  before   => Package["nginx"]
-		}
+		include "mp::mp_common"
                 package { "Nginx Httpd Server":
                   name   => "nginx",
                   ensure => '1.6.1-2.el6.mp',
