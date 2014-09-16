@@ -3,6 +3,15 @@ class nginx::oepapp {
 
     include nginx::oep-base
 
+    $vip = $::oepapp_vip
+    if $vip {
+      $vhost=$vip
+    }
+    else {
+      $vhost=$fqdn
+    }
+    notice($vhost)
+
     file { "nginx.conf":
         name    => "/etc/nginx/nginx.conf",
         content   => template("nginx/oepapp/nginx.conf.erb"),

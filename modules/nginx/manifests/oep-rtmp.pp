@@ -1,11 +1,11 @@
 
-class nginx::nginx_rtmp {
+class nginx::oep_rtmp {
 
     include nginx::oep-base
 
     file { "nginx.conf":
         name    => "/etc/nginx/nginx.conf",
-        source  => "puppet///nginx/rtmp/nginx.conf"),
+        source  => "puppet:///nginx/rtmp/nginx.conf",
         owner   => root,
         group   => root,
         mode    => 400,

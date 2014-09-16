@@ -9,13 +9,6 @@ class ftpd::ftpd_common {
                 "vsftpd":         ensure => "latest";
             }
 
-	    file { '/opt/ftp':
-		ensure => "directory",
-		owner  => "root",
-		group  => "root",
-		mode   => 755,
-	    }
-
         }
     }
 }
